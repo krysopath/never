@@ -1,0 +1,5 @@
+.idea
+anakin/__pycache__
+anakin.egg-info
+build
+dist
