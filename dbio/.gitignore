@@ -1,0 +1,5 @@
+.idea
+tbx_dbio/__pycache__
+tbx_dbio.egg-info
+build
+dist
