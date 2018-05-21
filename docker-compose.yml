@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  never:
+    build: .
+    ports:
+      - "5000:5000"
+    #volumes:
+    #  - g.db:/code/storage/stash/g.db
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_ROOT_PASSWORD='d@1qEk4G@dgq@&6&!$L6X89'
+      - MONGODB_USERNAME=never
+      - MONGODB_PASSWORD=never123
+      - MONGODB_DATABASE=neverdb
+    volumes:
+      - /var/run/never/mongodb-persistence:/bitnami
