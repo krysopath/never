@@ -4,7 +4,7 @@ from asciimatics.scene import Scene
 from asciimatics.screen import Screen
 from asciimatics.exceptions import ResizeScreenError, NextScene
 
-from never.ascii_views import LoginView, ListView, ContactView
+from broker.ascii_views import LoginView, ListView, ContactView
 from dbio import DataModel
 
 import sys

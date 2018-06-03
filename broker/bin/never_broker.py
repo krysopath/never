@@ -6,8 +6,8 @@ from getpass import getpass
 from os import environ
 from sys import argv
 
-from never.broker import dir_setup, Interactor, __stash__
-from never.exceptions import EndInputLoop
+from broker.broker import dir_setup, Interactor, __stash__
+from broker.exceptions import EndInputLoop
 from tbx_dbio import backup
 
 
@@ -84,7 +84,6 @@ def summary(listof_nds):
 
 def startup():
     print('(running never.broker)')
-    print('(validated user %s by ssh)' % user)
     #print('(backup in %s)' % __backuppath__)
     print("(type stop to quit and use tab for auto-completion)")
 
@@ -125,12 +124,12 @@ def input_loop():
             raise EndInputLoop
 
 
-if __name__ == '__main__':
+def main(user):
     readline.parse_and_bind('tab: complete')
-    masterpw = getpass('input master pw? ')
-    user = argv[1]
+
     dir_setup(__stash__, user)
-    i = Interactor(user, masterpw)
+    masterpw = getpass('input master pw? ')
+    i = Interactor('g', masterpw)
     pp = pprint.PrettyPrinter(indent=8)
 
     commands_d = {
@@ -162,3 +161,8 @@ if __name__ == '__main__':
         raise e
     finally:
         stop(reason)
+
+
+if __name__ == '__main__':
+    print(argv)
+    main('g')
