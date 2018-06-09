@@ -4,13 +4,11 @@ from urllib.parse import quote_plus
 
 
 def make_mongo(user='', passw='',
-               host='127.0.0.1',
+               host='never_mongodb_1',
                port=27017,
                db='neverdb'):
     return MongoClient(
-        'mongodb://{}:{}@{}:{}/{}'.format(
-            quote_plus(user),
-            quote_plus(passw),
+        'mongodb://{}:{}/{}'.format(
             host,
             port,
             db,

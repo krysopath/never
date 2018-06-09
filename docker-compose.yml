@@ -3,20 +3,21 @@ version: '2'
 services:
   broker:
     build: .
-    #ports:
-    #  - "0.0.0.0:5000:5000"
+    ports:
+      - "127.0.0.1:5000:5000"
     volumes:
       - ./broker:/code/broker
+      #- ./migrate_this.db:/code/migrate_this.db
       - ./run_api.py:/code/run_api.py
 
   mongodb:
     image: 'bitnami/mongodb:latest'
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGODB_ROOT_PASSWORD='d@1qEk4G@dgq@&6&!L6X89'
-      - MONGODB_USERNAME=never
-      - MONGODB_PASSWORD=never123
-      - MONGODB_DATABASE=neverdb
+    #ports:
+    #  - "27017:27017"
+    #environment:
+      #- MONGODB_ROOT_PASSWORD='d@1qEk4G@dgq@&6&!L6X89'
+      #- MONGODB_USERNAME=never
+      #- MONGODB_PASSWORD=never123
+      #- MONGODB_DATABASE=neverdb
     volumes:
       - /var/run/never/mongodb-persistence:/bitnami
