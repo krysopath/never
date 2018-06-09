@@ -2,7 +2,7 @@
 from flask import Flask, make_response
 from flask_restful import abort, Api
 from . import endpoints as ep
-from .serialization import MongoEncoder
+from .serialization import NeverEncoder
 from json import dumps
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def output_json(data, code, headers=None):
     resp = make_response(
         dumps(
             data,
-            cls=MongoEncoder,
+            cls=NeverEncoder,
             indent=2
         ),
         code

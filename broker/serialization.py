@@ -4,7 +4,7 @@ import base64
 from uuid import UUID
 
 
-class MongoEncoder(json.JSONEncoder):
+class NeverEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, ObjectId):
             return {
@@ -19,6 +19,5 @@ class MongoEncoder(json.JSONEncoder):
                 "uuid": str(obj)
             }
 
-
-        return super(MongoEncoder, self).default(obj)
+        return super(NeverEncoder, self).default(obj)
 
